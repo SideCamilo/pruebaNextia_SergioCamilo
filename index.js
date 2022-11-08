@@ -1,22 +1,27 @@
 'use strict'
 const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-require('dotenv').config();
+const cors = require('cors');
 
-var app = express();
+const app = express();
 
-// body capture
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+var corsOptions = {
+  origin: "http://localhost:8081"
+};
 
+
+app.use(cors(corsOptions));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const db = require("./app/models");
+
+db.sequelize.sync();
 // database conection
 
 // import routes
-const authRoutes = require('./routes/auth');
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
 
-// route middlewares
-app.use('/api/user', authRoutes);
 app.get('/', (req, res) => {
     res.json({
         state: true,
