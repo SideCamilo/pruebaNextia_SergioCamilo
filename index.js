@@ -13,8 +13,10 @@ app.use(bodyParser.json());
 // database conection
 
 // import routes
+const authRoutes = require('./routes/auth');
 
 // route middlewares
+app.use('/api/user', authRoutes);
 app.get('/', (req, res) => {
     res.json({
         state: true,

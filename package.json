@@ -13,5 +13,16 @@
   "scripts": {
     "dev": "nodemon index",
     "start": "node index"
-  }
+  },
+  "name": "Nextia Test",
+  "description": "Test for Nextia",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SideCamilo/pruebaNextia_SergioCamilo"
+  },
+  "author": "Sergio Camilo",
+  "license": "ISC"
 }
