@@ -12,9 +12,11 @@ exports.signup = (req, res) => {
   // Save User to Database
   User.create({
     username: req.body.username,
+    name: req.body.name,
     password: bcrypt.hashSync(req.body.password, 8)
   })
     .then(user => {
+      console.log(user);
       if (req.body.roles) {
         Role.findAll({
           where: {
@@ -73,8 +75,8 @@ exports.signin = (req, res) => {
         }
         res.status(200).send({
           id: user.id,
+          name: user.name,
           username: user.username,
-          email: user.email,
           roles: authorities,
           accessToken: token
         });
