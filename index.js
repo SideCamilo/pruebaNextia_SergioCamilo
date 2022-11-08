@@ -16,11 +16,11 @@ app.use(express.urlencoded({ extended: true }));
 const db = require("./app/models");
 
 db.sequelize.sync();
-// database conection
 
 // import routes
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
+require('./app/routes/bienes.routes')(app);
 
 app.get('/', (req, res) => {
     res.json({
